@@ -1,11 +1,11 @@
 ![1012-506github](https://github.com/Flupinochan/Flupinochan/assets/140839406/f09eed01-6367-4d3e-a580-d2f761de774a)
 ## Hi 👋, I'm MetalMental
 ### I am an engineer who likes pixel art
-![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=flupinochan&theme=tokyonight)
-![](http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Flupinochan&theme=tokyonight)
-![](http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Flupinochan&theme=tokyonight)
-![](http://github-profile-summary-cards.vercel.app/api/cards/stats?username=Flupinochan&theme=tokyonight)
-![](http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Flupinochan&theme=tokyonight&utcOffset=8)
+
+[![](https://raw.githubusercontent.com/Flupinochan/Flupinochan/master/profile-summary-card-output/tokyonight/0-profile-details.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+[![](https://raw.githubusercontent.com/Flupinochan/Flupinochan/master/profile-summary-card-output/tokyonight/1-repos-per-language.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards) [![](https://raw.githubusercontent.com/Flupinochan/Flupinochan/master/profile-summary-card-output/tokyonight/2-most-commit-language.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+[![](https://raw.githubusercontent.com/Flupinochan/Flupinochan/master/profile-summary-card-output/tokyonight/3-stats.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards) [![](https://raw.githubusercontent.com/Flupinochan/Flupinochan/master/profile-summary-card-output/tokyonight/4-productive-time.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
+
 <br/>
 - 🔭 I’m currently working on **designing and building AWS solutions**
 
