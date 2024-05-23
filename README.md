@@ -20,7 +20,6 @@
   <img src="./profile-summary-card-output/tokyonight/4-productive-time.svg" alt="time">
 </div>
 
-<br/>
 - 🔭 I’m currently working on **designing and building AWS solutions**
 
 - 🌱 I’m currently learning about **generative AI**
