@@ -7,11 +7,6 @@
 ![](./profile-summary-card-output/tokyonight/2-most-commit-language.svg)
 ![](./profile-summary-card-output/tokyonight/3-stats.svg)]
 ![](./profile-summary-card-output/tokyonight/4-productive-time.svg)
-<img src="./profile-summary-card-output/tokyonight/0-profile-details.svg" alt="detail">
-<img src="./profile-summary-card-output/tokyonight/1-repos-per-language.svg" alt="repo-language">
-<img src="./profile-summary-card-output/tokyonight/2-most-commit-language.svg" alt="commit-language">
-<img src="./profile-summary-card-output/tokyonight/3-stats.svg" alt="stats">
-<img src="./profile-summary-card-output/tokyonight/4-productive-time.svg" alt="time">
 
 <br/>
 - 🔭 I’m currently working on **designing and building AWS solutions**
