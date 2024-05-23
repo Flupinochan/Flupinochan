@@ -1,5 +1,5 @@
 ![1012-506github](https://github.com/Flupinochan/Flupinochan/assets/140839406/f09eed01-6367-4d3e-a580-d2f761de774a)
-## Hi 👋, I'm MetalMental
+## Hi 👋, I'm MetalMental (^^♪
 ### I am an engineer who likes pixel art
 
 [![](https://raw.githubusercontent.com/Flupinochan/Flupinochan/master/profile-summary-card-output/tokyonight/0-profile-details.svg)](https://github.com/vn7n24fzkq/github-profile-summary-cards)
