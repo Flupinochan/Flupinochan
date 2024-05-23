@@ -1,7 +1,7 @@
 ![1012-506github](https://github.com/Flupinochan/Flupinochan/assets/140839406/f09eed01-6367-4d3e-a580-d2f761de774a)
 ## Hi 👋, I'm MetalMental
 ### I am an engineer who likes pixel art
-![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Flupinochan&theme=tokyonight)
+![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=flupinochan&theme=tokyonight)
 ![](http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Flupinochan&theme=tokyonight)
 ![](http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Flupinochan&theme=tokyonight)
 ![](http://github-profile-summary-cards.vercel.app/api/cards/stats?username=Flupinochan&theme=tokyonight)
