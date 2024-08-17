@@ -24,7 +24,7 @@
 
 - 🌱 I’m currently learning about **generative AI**
 
-- 📝 I regularly write articles on [https://www.metalmental.net/](https://www.metalmental.net/)
+- 📝 I regularly write articles on [MyBlog](https://www.metalmental.net/) and [Zenn](https://zenn.dev/metalmental)
 
 - <img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/youtube.svg" alt="youtube" height="21" width="28" float="left"/>My YouTube channel is located at [https://www.youtube.com/@Flupinochan/](https://www.youtube.com/@Flupinochan/)
 
