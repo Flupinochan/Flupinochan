@@ -7,11 +7,14 @@
 - [Zenn](https://zenn.dev/metalmental)
 - [Youtube](https://www.youtube.com/@Flupinochan/)
 
-<img src="./profile-summary-card-output/tokyonight/0-profile-details.svg" alt="detail" style="width: 100%;">
+<img src="./profile-summary-card-output/tokyonight/0-profile-details.svg" alt="detail" width="100%">
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-  <img src="./output-bytes.svg" alt="stats" style="width: 100%;">
-  <img src="./output-count.svg" alt="time" style="width: 100%;">
-  <img src="./profile-summary-card-output/tokyonight/3-stats.svg" alt="stats" style="width: 100%;">
-  <img src="./output-commits.svg" alt="time" style="width: 100%;">
+<div align="center">
+  <img src="./output-bytes.svg" alt="stats" width="49%">
+  <img src="./output-count.svg" alt="time" width="49%">
+</div>
+
+<div align="center">
+  <img src="./profile-summary-card-output/tokyonight/3-stats.svg" alt="stats" width="49%">
+  <img src="./output-commits.svg" alt="time" width="49%">
 </div>
