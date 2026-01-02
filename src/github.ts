@@ -77,6 +77,7 @@ export class GitHubStats {
 
   /**
    * 全リポジトリの時間帯別コミット数を集計(0-23時)
+   * ボットによるコミットは除外
    * @param repos
    * @returns
    */
@@ -100,14 +101,28 @@ export class GitHubStats {
         );
 
         for (const commit of commits) {
+          // ボットによるコミットを除外
+          const authorName = commit.commit.author?.name || "";
+          const authorEmail = commit.commit.author?.email || "";
+          const authorType = commit.author?.type || "";
+
+          const isBot =
+            authorType === "Bot" ||
+            authorName.includes("[bot]") ||
+            authorName.includes("github-actions") ||
+            authorEmail.includes("[bot]") ||
+            authorEmail.includes("github-actions");
+
+          if (isBot) {
+            continue;
+          }
+
           const date = new Date(commit.commit.author?.date || "");
           const hour = date.getHours();
           hourCounts[hour] = (hourCounts[hour] || 0) + 1;
         }
       } catch (_error) {}
     }
-
-    console.log("Hour Counts:", hourCounts);
 
     return hourCounts;
   }

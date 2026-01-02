@@ -8,10 +8,12 @@ global.document = dom.window.document;
 
 // デザイン定数
 const COLORS = {
-  background: "#0d1117",
-  legendText: "#c9d1d9",
-  title: "#58a6ff",
-  percentText: "#ffffff",
+  background: "#1a1b26",
+  title: "#7aa2f7",
+  bar: "#BF91F3",
+  barStroke: "#8b6bb0",
+  axis: "#00B4AB",
+  axisDomain: "#414868",
 };
 
 const LANGUAGE_COLORS: Record<string, string> = {
@@ -51,7 +53,7 @@ const CHART = {
   padAngle: 0.03,
   cornerRadius: 1,
   strokeWidth: 1,
-  minLabelThreshold: 10, // 10%以下のセグメントはラベルを非表示
+  minLabelThreshold: 10,
 };
 
 const LAYOUT = {
@@ -59,19 +61,22 @@ const LAYOUT = {
   chartWidthRatio: 0.6,
 };
 
+const CHART_SIZE = {
+  width: 400,
+  height: 280,
+};
+
 export function generateChart(
   data: Record<string, number>,
   outputPath: string,
   title: string,
 ) {
-  const width = 400;
-  const contentHeight = 200;
-  const height = SPACING.titleHeight + contentHeight + SPACING.contentPadding;
+  const width = CHART_SIZE.width;
+  const height = CHART_SIZE.height;
+  const contentHeight = height - SPACING.titleHeight - SPACING.contentPadding;
 
-  // 合計値を計算
   const total = Object.values(data).reduce((sum, value) => sum + value, 0);
 
-  // データ変換してソート
   const chartData = Object.entries(data)
     .map(([name, value]) => ({
       name,
@@ -82,14 +87,12 @@ export function generateChart(
     }))
     .sort((a, b) => b.value - a.value);
 
-  // SVG要素の作成
   const svg = d3
     .create("svg")
     .attr("width", width)
     .attr("height", height)
     .attr("xmlns", "http://www.w3.org/2000/svg");
 
-  // 背景
   svg
     .append("rect")
     .attr("width", width)
@@ -98,7 +101,6 @@ export function generateChart(
     .attr("rx", SPACING.borderRadius)
     .attr("ry", SPACING.borderRadius);
 
-  // タイトル(中央上部)
   svg
     .append("text")
     .attr("x", width / 2)
@@ -110,12 +112,10 @@ export function generateChart(
     .style("font-weight", "600")
     .text(title);
 
-  // 凡例エリア(左側40%)
   const legendWidth = width * LAYOUT.legendWidthRatio;
   const legendX = SPACING.contentPadding;
   const legendY = SPACING.titleHeight;
 
-  // 凡例の垂直中央揃え用のオフセット計算
   const totalLegendHeight = chartData.length * SPACING.legendItemHeight;
   const legendStartY = legendY + (contentHeight - totalLegendHeight) / 2;
 
@@ -142,13 +142,12 @@ export function generateChart(
       .append("text")
       .attr("x", SPACING.legendIconSize + SPACING.legendIconMargin)
       .attr("y", SPACING.legendIconSize - 2)
-      .attr("fill", COLORS.legendText)
+      .attr("fill", COLORS.axis)
       .style("font-family", FONTS.family)
       .style("font-size", FONTS.sizeLegend)
       .text(d.name);
   });
 
-  // チャートエリア(右側60%)
   const chartWidth = width * LAYOUT.chartWidthRatio;
   const chartCenterX = legendWidth + chartWidth / 2;
   const chartCenterY = SPACING.titleHeight + contentHeight / 2;
@@ -158,7 +157,6 @@ export function generateChart(
     .append("g")
     .attr("transform", `translate(${chartCenterX}, ${chartCenterY})`);
 
-  // ドーナツチャートの生成
   const pie = d3
     .pie<any>()
     .value((d) => d.value)
@@ -171,7 +169,6 @@ export function generateChart(
     .outerRadius(radius)
     .cornerRadius(CHART.cornerRadius);
 
-  // セグメントの描画
   g.selectAll("path")
     .data(pie(chartData))
     .enter()
@@ -181,24 +178,119 @@ export function generateChart(
     .attr("stroke", (d) => d.data.strokeColor)
     .attr("stroke-width", CHART.strokeWidth);
 
-  // パーセンテージテキストの描画（10%以上のみ）
-  g.selectAll("text")
-    .data(pie(chartData))
-    .enter()
-    .filter((d) => parseFloat(d.data.percentage) >= CHART.minLabelThreshold)
-    .append("text")
-    .attr("transform", (d: any) => {
-      const pos = arc.centroid(d);
-      return `translate(${pos[0]}, ${pos[1]})`;
-    })
-    .attr("text-anchor", "middle")
-    .attr("fill", COLORS.percentText)
-    .style("font-family", FONTS.family)
-    .style("font-size", FONTS.sizePercent)
-    .style("font-weight", "600")
-    .style("text-shadow", "0 1px 2px rgba(0,0,0,0.6)")
-    .text((d) => `${d.data.percentage}%`);
+  writeFileSync(outputPath, svg.node()!.outerHTML);
+}
 
-  // SVGをファイルに出力
+export function generateBarChart(
+  data: Record<number, number>,
+  outputPath: string,
+  title: string,
+) {
+  const width = CHART_SIZE.width;
+  const height = CHART_SIZE.height;
+  const margin = { top: 60, right: 20, bottom: 50, left: 50 };
+  const chartWidth = width - margin.left - margin.right;
+  const chartHeight = height - margin.top - margin.bottom;
+
+  const svg = d3
+    .create("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("xmlns", "http://www.w3.org/2000/svg");
+
+  svg
+    .append("rect")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("fill", COLORS.background)
+    .attr("rx", SPACING.borderRadius)
+    .attr("ry", SPACING.borderRadius);
+
+  svg
+    .append("text")
+    .attr("x", width / 2)
+    .attr("y", 30)
+    .attr("fill", COLORS.title)
+    .attr("text-anchor", "middle")
+    .style("font-family", FONTS.family)
+    .style("font-size", FONTS.sizeTitle)
+    .style("font-weight", "600")
+    .text(title);
+
+  const g = svg
+    .append("g")
+    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+  const chartData = Object.entries(data)
+    .map(([hour, count]) => ({ hour: Number(hour), count }))
+    .sort((a, b) => a.hour - b.hour);
+
+  const xScale = d3
+    .scaleBand()
+    .domain(chartData.map((d) => d.hour.toString()))
+    .range([0, chartWidth])
+    .padding(0.2);
+
+  const yScale = d3
+    .scaleLinear()
+    .domain([0, d3.max(chartData, (d) => d.count) || 0])
+    .range([chartHeight, 0])
+    .nice();
+
+  g.selectAll("rect")
+    .data(chartData)
+    .enter()
+    .append("rect")
+    .attr("x", (d) => xScale(d.hour.toString()) || 0)
+    .attr("y", (d) => yScale(d.count))
+    .attr("width", xScale.bandwidth())
+    .attr("height", (d) => chartHeight - yScale(d.count))
+    .attr("fill", COLORS.bar)
+    .attr("stroke", COLORS.barStroke)
+    .attr("stroke-width", 1)
+    .attr("rx", 1)
+    .attr("ry", 1);
+
+  const xAxis = d3
+    .axisBottom(xScale)
+    .tickValues(
+      chartData.filter((_, i) => i % 3 === 0).map((d) => d.hour.toString()),
+    );
+
+  const xAxisGroup = g
+    .append("g")
+    .attr("transform", `translate(0, ${chartHeight})`)
+    .call(xAxis);
+
+  xAxisGroup.select(".domain").attr("stroke", COLORS.axis);
+  xAxisGroup.selectAll(".tick line").attr("stroke", COLORS.axis);
+  xAxisGroup
+    .selectAll(".tick text")
+    .attr("fill", COLORS.axis)
+    .style("font-family", FONTS.family)
+    .style("font-size", "11px");
+
+  const yAxis = d3.axisLeft(yScale).ticks(5);
+
+  const yAxisGroup = g.append("g").call(yAxis);
+
+  yAxisGroup.select(".domain").attr("stroke", COLORS.axis);
+  yAxisGroup.selectAll(".tick line").attr("stroke", COLORS.axis);
+  yAxisGroup
+    .selectAll(".tick text")
+    .attr("fill", COLORS.axis)
+    .style("font-family", FONTS.family)
+    .style("font-size", "11px");
+
+  svg
+    .append("text")
+    .attr("x", width / 2)
+    .attr("y", height - 10)
+    .attr("fill", COLORS.axis)
+    .attr("text-anchor", "middle")
+    .style("font-family", FONTS.family)
+    .style("font-size", "12px")
+    .text("JST Hour");
+
   writeFileSync(outputPath, svg.node()!.outerHTML);
 }
