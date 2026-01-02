@@ -36,5 +36,5 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add output-bytes.svg output-count.svg
+          git add output-*.svg
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update statistics [skip ci]" && git push)
