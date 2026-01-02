@@ -118,8 +118,8 @@ export class GitHubStats {
           }
 
           const date = new Date(commit.commit.author?.date || "");
-          const hour = date.getHours();
-          hourCounts[hour] = (hourCounts[hour] || 0) + 1;
+          const jstHour = (date.getUTCHours() + 9) % 24;
+          hourCounts[jstHour] = (hourCounts[jstHour] || 0) + 1;
         }
       } catch (_error) {}
     }

@@ -290,7 +290,7 @@ export function generateBarChart(
     .attr("text-anchor", "middle")
     .style("font-family", FONTS.family)
     .style("font-size", "12px")
-    .text("JST Hour");
+    .text("JST");
 
   writeFileSync(outputPath, svg.node()!.outerHTML);
 }
