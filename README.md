@@ -15,4 +15,3 @@
   <img src="./profile-summary-card-output/tokyonight/3-stats.svg" alt="stats" style="width: 100%;">
   <img src="./output-commits.svg" alt="time" style="width: 100%;">
 </div>
-
