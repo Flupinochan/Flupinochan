@@ -2,12 +2,12 @@
   "name": "flupinochan",
   "version": "1.0.0",
   "description": "![1012-506github](https://github.com/Flupinochan/Flupinochan/assets/140839406/f09eed01-6367-4d3e-a580-d2f761de774a)\r ## Hi 👋, I'm MetalMental (^^♪\r ### I am an engineer who likes pixel art",
-  "main": "index.js",
+  "main": "main.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "ts-node src/index.ts",
+    "start": "node dist/main.js",
+    "dev": "ts-node src/main.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

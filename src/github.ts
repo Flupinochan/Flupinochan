@@ -6,7 +6,7 @@ dotenv.config();
 const GITHUB_OWNER = "Flupinochan";
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const TARGET_LANGUAGES = ["TypeScript", "Dart", "Python", "C#", "Rust"];
-const PER_PAGE = 100;
+const PER_PAGE = 50;
 
 type Repository =
   RestEndpointMethodTypes["repos"]["listForUser"]["response"]["data"][0];
@@ -25,7 +25,7 @@ export class GitHubStats {
    * @returns
    */
   async getRepositories(): Promise<Repository[]> {
-    const { data: repos } = await this.octokit.repos.listForUser({
+    const repos = await this.octokit.paginate(this.octokit.repos.listForUser, {
       username: GITHUB_OWNER,
       per_page: PER_PAGE,
     });
@@ -73,5 +73,42 @@ export class GitHubStats {
     }
 
     return languageCounts;
+  }
+
+  /**
+   * 全リポジトリの時間帯別コミット数を集計(0-23時)
+   * @param repos
+   * @returns
+   */
+  async getCommitsByHour(repos: Repository[]) {
+    const hourCounts: Record<number, number> = {};
+
+    // 0-23時を初期化
+    for (let i = 0; i < 24; i++) {
+      hourCounts[i] = 0;
+    }
+
+    for (const repo of repos) {
+      try {
+        const commits = await this.octokit.paginate(
+          this.octokit.repos.listCommits,
+          {
+            owner: GITHUB_OWNER,
+            repo: repo.name,
+            per_page: PER_PAGE,
+          },
+        );
+
+        for (const commit of commits) {
+          const date = new Date(commit.commit.author?.date || "");
+          const hour = date.getHours();
+          hourCounts[hour] = (hourCounts[hour] || 0) + 1;
+        }
+      } catch (_error) {}
+    }
+
+    console.log("Hour Counts:", hourCounts);
+
+    return hourCounts;
   }
 }

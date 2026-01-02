@@ -8,19 +8,15 @@ async function main() {
     const repos = await githubStats.getRepositories();
     const languageTotals = await githubStats.getLangStatesByBytes(repos);
     const languageCounts = await githubStats.getLangStatesByMain(repos);
+    const hourCounts = await githubStats.getCommitsByHour(repos);
 
-    // グラフ用データの準備
-    const chartData = [
-      { name: "TypeScript", value: 45, color: "#3178c6" },
-      { name: "Python", value: 25, color: "#3776ab" },
-      { name: "Rust", value: 20, color: "#ce422b" },
-      { name: "C#", value: 7, color: "#239120" },
-      { name: "Dockerfile", value: 3, color: "#384d54" },
-    ];
+    // バイト数のグラフ生成
+    generateChart(languageTotals, "output-bytes.svg", "By Total Bytes");
+    console.log("Chart generated: output-bytes.svg");
 
-    // グラフ生成
-    generateChart(chartData, "output.svg");
-    console.log("Chart generated: output.svg");
+    // リポジトリ数のグラフ生成
+    generateChart(languageCounts, "output-count.svg", "By Repository Count");
+    console.log("Chart generated: output-count.svg");
   } catch (error) {
     console.error("Error:", error);
     process.exit(1);
