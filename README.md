@@ -18,3 +18,7 @@
   <img src="./profile-summary-card-output/tokyonight/3-stats.svg" alt="stats" width="49%">
   <img src="./output-commits.svg" alt="time" width="49%">
 </div>
+
+## 🤝 Contributions
+
+- [nulab/backlog-mcp-server](https://github.com/nulab/backlog-mcp-server/pull/120)
