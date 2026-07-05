@@ -1,4 +1,11 @@
-![1012-506github](https://github.com/Flupinochan/Flupinochan/assets/140839406/f09eed01-6367-4d3e-a580-d2f761de774a)
+<p align="center">
+  <img
+    width="500"
+    height="500"
+    alt="nekotto-chan"
+    src="https://github.com/user-attachments/assets/a30a189c-26ce-4323-90e8-51c40098093a"
+  />
+</p>
 
 ## Hi 👋, I'm MetalMental (^^♪
 ### I am an engineer who likes pixel art
