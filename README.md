@@ -1,10 +1,5 @@
 <p align="center">
-  <img
-    width="500"
-    height="500"
-    alt="nekotto-chan"
-    src="https://github.com/user-attachments/assets/a30a189c-26ce-4323-90e8-51c40098093a"
-  />
+    <img width="500" height="500" alt="the-sandbox-dance" src="https://github.com/user-attachments/assets/26648b89-af42-4c28-bda8-59385549a24b" />
 </p>
 
 ## Hi 👋, I'm MetalMental (^^♪
