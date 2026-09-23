@@ -24,3 +24,4 @@
 ## 🤝 Contributions
 
 - [nulab/backlog-mcp-server](https://github.com/nulab/backlog-mcp-server/pull/120)
+- [grafana/tempo](https://github.com/grafana/tempo/pull/6951)
